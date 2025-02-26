@@ -1,5 +1,5 @@
 import clips # type: ignore
-with open("./data/test.txt", "r") as testFile:
+with open("./data/animals.txt", "r") as testFile:
     print(testFile.read())
 
 sistemaExperto= clips.Environment()
