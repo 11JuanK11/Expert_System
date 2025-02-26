@@ -1,0 +1,20 @@
+León: cuadrúpedo, vertebrado
+Caballo: cuadrúpedo, vertebrado
+Lobo: cuadrúpedo, vertebrado
+Delfín: marino, vertebrado
+Tiburón: marino, vertebrado
+Ballena: marino, vertebrado
+Perro: cuadrúpedo, vertebrado
+Tigre: cuadrúpedo, vertebrado
+Elefante: cuadrúpedo, vertebrado
+Venado: cuadrúpedo, vertebrado
+Foca: marino, vertebrado
+Tortuga marina: marino, vertebrado
+Cocodrilo: cuadrúpedo, marino, vertebrado
+Nutria: cuadrúpedo, marino, vertebrado
+Morsa: cuadrúpedo, marino, vertebrado
+Hipopótamo: cuadrúpedo, marino, vertebrado
+Orca: marino, vertebrado
+Jaguar: cuadrúpedo, vertebrado
+Rinoceronte: cuadrúpedo, vertebrado
+Manatí: marino, vertebrado
