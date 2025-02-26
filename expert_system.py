@@ -13,7 +13,7 @@ reglaVertebrados = ("(defrule reglaVertebrados (Columna) => (assert(Vertebrado))
 reglaMamiferoTerrestre = ("(defrule reglaMamiferoTerrestre (Vertebrado)(CuatroPatas)=> (assert(MamiferoTerrestre)))")
 reglaMamiferoAcuatico = ("(defrule reglaMamiferoAcuatico (Marino)(Vertebrado) => (assert(MamiferoAcuatico)))")
 reglaMamiferoSemiacuatico = ("(defrule reglaMamiferoSemiacuatico (Marino)(Vertebrado)(Cuadrupedo) => (assert(MamiferoSemiacuatico)))")
-
+#aaaaaaaaaaaaaaaaaaa
 #creacion de las reglas
 sistemaExperto.build(reglaCuadrupedos)
 sistemaExperto.build(reglaMarino)
