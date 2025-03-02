@@ -6,18 +6,41 @@ with open("./data/animals.txt", "r") as testFile:
 sistemaExperto= clips.Environment()
 sistemaExperto.clear()
 
-#reglas del sistema experto
+# 
 reglaCuadrupedos = ("(defrule reglaCuadrupedo (CuatroPatas) => (assert(Cuadrupedo)))")
 reglaMarino = ("(defrule reglaMarino (ViveEnMar)=> (assert(Marino)))")
 reglaVertebrados = ("(defrule reglaVertebrados (Columna) => (assert(Vertebrado)))")
+reglaMarinoCuatroPatas = ("(defrule reglaMarinoCuatroPatas (ViveEnMar)(CuatroPatas) => (assert(MarinoCuatroPatas)))")
 reglaMamiferoTerrestre = ("(defrule reglaMamiferoTerrestre (Vertebrado)(CuatroPatas)=> (assert(MamiferoTerrestre)))")
 reglaMamiferoAcuatico = ("(defrule reglaMamiferoAcuatico (Marino)(Vertebrado) => (assert(MamiferoAcuatico)))")
 reglaMamiferoSemiacuatico = ("(defrule reglaMamiferoSemiacuatico (Marino)(Vertebrado)(Cuadrupedo) => (assert(MamiferoSemiacuatico)))")
-#aaaaaaaaaaaaaaaaaaa
-#creacion de las reglas
+
+# Reglas en negativo
+reglaNoCuadrupedos = ("(defrule reglaNoCuadrupedo (NoCuatroPatas) => (assert(NoCuadrupedo)))")
+reglaNoMarino = ("(defrule reglaNoMarino (NoViveEnMar) => (assert(NoMarino)))")
+reglaNoVertebrados = ("(defrule reglaNoVertebrados (NoColumna) => (assert(NoVertebrado)))")
+reglaNoMarinoCuatroPatas = ("(defrule reglaNoMarinoCuatroPatas (NoViveEnMar)(NoCuatroPatas) => (assert(NoMarinoCuatroPatas)))")
+reglaNoMamiferoTerrestre = ("(defrule reglaNoMamiferoTerrestre (Vertebrado)(NoCuatroPatas) => (assert(NoMamiferoTerrestre)))")
+reglaNoMamiferoAcuatico = ("(defrule reglaNoMamiferoAcuatico (NoViveEnMar)(Vertebrado) => (assert(NoMamiferoAcuatico)))")
+reglaNoMamiferoSemiacuatico = ("(defrule reglaNoMamiferoSemiacuatico (NoViveEnMar)(Vertebrado)(NoCuadrupedo) => (assert(NoMamiferoSemiacuatico)))")
+
+# Nuevas reglas para "Marino y CuatroPatas" y sus negaciones
+
+# Creación de las reglas en el sistema experto
 sistemaExperto.build(reglaCuadrupedos)
 sistemaExperto.build(reglaMarino)
-
+sistemaExperto.build(reglaVertebrados)
+sistemaExperto.build(reglaMarinoCuatroPatas)
+sistemaExperto.build(reglaMamiferoTerrestre)
+sistemaExperto.build(reglaMamiferoAcuatico)
+sistemaExperto.build(reglaMamiferoSemiacuatico)
+sistemaExperto.build(reglaNoCuadrupedos)
+sistemaExperto.build(reglaNoMarino)
+sistemaExperto.build(reglaNoVertebrados)
+sistemaExperto.build(reglaNoMarinoCuatroPatas)
+sistemaExperto.build(reglaNoMamiferoTerrestre)
+sistemaExperto.build(reglaNoMamiferoAcuatico)
+sistemaExperto.build(reglaNoMamiferoSemiacuatico)
 #Mostrar las reglas ya creadas
 for r in sistemaExperto.rules():
     print(r)
