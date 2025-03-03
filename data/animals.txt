@@ -1,20 +1,30 @@
-León: cuadrúpedo, vertebrado
-Caballo: cuadrúpedo, vertebrado
-Lobo: cuadrúpedo, vertebrado
-Delfín: marino, vertebrado
-Tiburón: marino, vertebrado
-Ballena: marino, vertebrado
-Perro: cuadrúpedo, vertebrado
-Tigre: cuadrúpedo, vertebrado
-Elefante: cuadrúpedo, vertebrado
-Venado: cuadrúpedo, vertebrado
-Foca: marino, vertebrado
-Tortuga marina: marino, vertebrado
-Cocodrilo: cuadrúpedo, marino, vertebrado
-Nutria: cuadrúpedo, marino, vertebrado
-Morsa: cuadrúpedo, marino, vertebrado
-Hipopótamo: cuadrúpedo, marino, vertebrado
-Orca: marino, vertebrado
-Jaguar: cuadrúpedo, vertebrado
-Rinoceronte: cuadrúpedo, vertebrado
-Manatí: marino, vertebrado
+Zorro:Cuadrupedo, Vertebrado, NoMarino  
+Delfín:NoCuadrupedo, Vertebrado, Marino  
+Tiburón:NoCuadrupedo, Vertebrado, Marino  
+León:Cuadrupedo, Vertebrado, NoMarino  
+Pingüino:NoCuadrupedo, Vertebrado, NoMarino  
+Tortuga:NoCuadrupedo, Vertebrado, NoMarino  
+Cocodrilo:Cuadrupedo, Vertebrado, Marino  
+Ornitorrinco:Cuadrupedo, Vertebrado, Marino  
+Foca:NoCuadrupedo, Vertebrado, Marino  
+Caballo:Cuadrupedo, Vertebrado, NoMarino  
+Vaca:Cuadrupedo, Vertebrado, NoMarino  
+Rana:NoCuadrupedo, Vertebrado, NoMarino  
+Pulpo:NoCuadrupedo, NoVertebrado, Marino  
+Lobo:Cuadrupedo, Vertebrado, NoMarino  
+Leopardo:Cuadrupedo, Vertebrado, NoMarino  
+Hipopótamo:Cuadrupedo, Vertebrado, NoMarino  
+Jirafa:Cuadrupedo, Vertebrado, NoMarino  
+Pez Espada:NoCuadrupedo, Vertebrado, Marino  
+Águila:NoCuadrupedo, Vertebrado, NoMarino  
+Tiburón Martillo:NoCuadrupedo, Vertebrado, Marino  
+Caracol:NoCuadrupedo, NoVertebrado, NoMarino  
+Armadillo:Cuadrupedo, Vertebrado, NoMarino  
+Castor:Cuadrupedo, Vertebrado, NoMarino  
+Nutria:Cuadrupedo, Vertebrado, Marino  
+Murciélago:NoCuadrupedo, Vertebrado, NoMarino  
+Erizo:Cuadrupedo, Vertebrado, NoMarino  
+Puma:Cuadrupedo, Vertebrado, NoMarino  
+Calamar:NoCuadrupedo, NoVertebrado, Marino  
+Canguro:NoCuadrupedo, Vertebrado, NoMarino  
+Serpiente:NoCuadrupedo, Vertebrado, NoMarino  
