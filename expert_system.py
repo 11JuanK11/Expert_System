@@ -44,15 +44,6 @@ sistemaExperto.build(reglaNoMamiferoTerrestre)
 sistemaExperto.build(reglaVertebradoNoMarinoCuadrupedo)
 sistemaExperto.build(reglaNoVertebradoNoMarinoNoCuadrupedo)
 
-#ingresar afirmaciones
-for i in range(0, 3):
-    elHecho=input(f"Digite hecho {i}-> ")
-    sistemaExperto.assert_string(f"({elHecho})")
-
-#que reglas ya se han activado dependiendo de las afirmaciones que se hayan ingresado
-for ac in sistemaExperto.activations():
-    print(ac)
-
 #ejecutar ambiente de CLIPS (!IMPORTANTE)
 caracteristicas = []
 caracteres_a_eliminar = "()"
@@ -60,28 +51,5 @@ for fact in sistemaExperto.facts():
     fact = str(fact).translate(str.maketrans("", "", caracteres_a_eliminar))
     caracteristicas.append(fact)
 
-
 sistemaExperto.run()
 
-#Dependiendo de los hechos, hacer una cosa
-for fact in sistemaExperto.facts():
-    factString = str(fact)
-    factString = factString.translate(str.maketrans("", "", caracteres_a_eliminar))
-    if "MamiferoSemiacuatico" == factString:
-        print("Es un mamífero semiacuático")
-    if "MamiferoAcuatico" == factString:
-        print("Es un mamífero acuático")
-    if "NoVertebradoMarinoCuadrupedo" == factString:
-        print("Es un animal marino no vertebrado y cuadrúpedo")
-    if "NoMamiferoSemiacuatico" == factString:
-        print("No es un mamífero semiacuático")
-    if "MamiferoTerrestre" == factString:
-        print("Es un mamífero terrestre")
-    if "NoMamiferoTerrestre" == factString:
-        print("No es un mamífero terrestre")
-    if "VertebradoNoMarinoCuadrupedo" == factString:
-        print("Es un vertebrado no marino y cuadrúpedo")
-    if "NoVertebradoNoMarinoNoCuadrupedo" == factString:
-        print("Es un animal no vertebrado, no marino y no cuadrúpedo")
-    
-print(buscar_animal_por_caracteristicas(caracteristicas))
