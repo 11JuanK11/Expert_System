@@ -33,12 +33,17 @@ def enviar_respuestas():
         elif respuesta3 == "No":
             hechos.append("NoCuadrupedo")
 
-        # Buscar animales con esas características
-        animales_encontrados = expert_system.buscar_animal_por_caracteristicas(hechos)
+        ambiente_experto = expert_system.inicializar_ambiente()
+
+        for hecho in hechos:
+            ambiente_experto.assert_string(f"({hecho})")
+
+        animales_encontrados = expert_system.ejecutar_ambiente(ambiente_experto)
 
         # Mostrar resultados en el frame derecho
         if animales_encontrados:
-            resultado_label.config(text="Animales encontrados:\n" + "\n".join(animales_encontrados))
+            resultado_clasificacion_label.config(text="Clasificación: " + animales_encontrados["clasificacion"])
+            resultado_label.config(text="Animales encontrados:\n" + "\n".join(animales_encontrados["animales"]))
         else:
             resultado_label.config(text="No se encontraron animales con esas características.")
     else:
@@ -90,8 +95,11 @@ tk.Button(frame_botones, text="Cerrar", command=cerrar_ventana).pack(side=tk.LEF
 
 # Sección de resultados en el frame derecho
 tk.Label(frame_resultados, text="Resultados", font=("Arial", 12, "bold"), bg="lightgray").pack()
+resultado_clasificacion_label = tk.Label(frame_resultados, text="", fg="black", bg="lightgray")
 resultado_label = tk.Label(frame_resultados, text="Aquí aparecerán los resultados...", fg="black", bg="lightgray")
+resultado_clasificacion_label.pack(pady=10)
 resultado_label.pack(pady=10)
+
 
 # Ejecutar la ventana
 root.mainloop()

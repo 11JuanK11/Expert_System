@@ -21,35 +21,58 @@ def buscar_animal_por_caracteristicas(caracteristicas):
     return animales
 
 import clips # type: ignore
-#creacion ambiente de CLIPS
-sistemaExperto= clips.Environment()
-sistemaExperto.clear()
 
-reglaMamiferoSemiacuatico = ("(defrule reglaMamiferoSemiacuatico (Marino)(Vertebrado)(Cuadrupedo) => (assert(MamiferoSemiacuatico)))")
-reglaMamiferoAcuatico = ("(defrule reglaMamiferoAcuatico (Marino)(Vertebrado)(NoCuadrupedo) => (assert(MamiferoAcuatico)))")
-reglaNoVertebradoMarinoCuadrupedo = ("(defrule reglaNoVertebradoMarinoCuadrupedo (Marino)(NoVertebrado)(Cuadrupedo) => (assert(NoVertebradoMarinoCuadrupedo)))")
-reglaNoMamiferoSemiacuatico = ("(defrule reglaNoMamiferoSemiacuatico (Marino)(NoVertebrado)(NoCuadrupedo) => (assert(NoMamiferoSemiacuatico)))")
-reglaMamiferoTerrestre = ("(defrule reglaMamiferoTerrestre (NoMarino)(Vertebrado)(Cuadrupedo) => (assert(MamiferoTerrestre)))")
-reglaNoMamiferoTerrestre = ("(defrule reglaNoMamiferoTerrestre (NoMarino)(Vertebrado)(NoCuadrupedo) => (assert(NoMamiferoTerrestre)))")
-reglaVertebradoNoMarinoCuadrupedo = ("(defrule reglaVertebradoNoMarinoCuadrupedo (NoMarino)(NoVertebrado)(Cuadrupedo) => (assert(VertebradoNoMarinoCuadrupedo)))")
-reglaNoVertebradoNoMarinoNoCuadrupedo = ("(defrule reglaNoVertebradoNoMarinoNoCuadrupedo (NoMarino)(NoVertebrado)(NoCuadrupedo) => (assert(NoVertebradoNoMarinoNoCuadrupedo)))")
-
-# Creación de las reglas en el sistema experto
-sistemaExperto.build(reglaMamiferoSemiacuatico)
-sistemaExperto.build(reglaMamiferoAcuatico)
-sistemaExperto.build(reglaNoVertebradoMarinoCuadrupedo)
-sistemaExperto.build(reglaNoMamiferoSemiacuatico)
-sistemaExperto.build(reglaMamiferoTerrestre)
-sistemaExperto.build(reglaNoMamiferoTerrestre)
-sistemaExperto.build(reglaVertebradoNoMarinoCuadrupedo)
-sistemaExperto.build(reglaNoVertebradoNoMarinoNoCuadrupedo)
-
-#ejecutar ambiente de CLIPS (!IMPORTANTE)
-caracteristicas = []
 caracteres_a_eliminar = "()"
-for fact in sistemaExperto.facts():
-    fact = str(fact).translate(str.maketrans("", "", caracteres_a_eliminar))
-    caracteristicas.append(fact)
+reglas_sistema_experto = []
+reglas_sistema_experto.append("(defrule reglaMamiferoSemiacuatico (Marino)(Vertebrado)(Cuadrupedo) => (assert(MamiferoSemiacuatico)))")
+reglas_sistema_experto.append("(defrule reglaMamiferoAcuatico (Marino)(Vertebrado)(NoCuadrupedo) => (assert(MamiferoAcuatico)))")
+reglas_sistema_experto.append("(defrule reglaNoVertebradoMarinoCuadrupedo (Marino)(NoVertebrado)(Cuadrupedo) => (assert(NoVertebradoMarinoCuadrupedo)))")
+reglas_sistema_experto.append("(defrule reglaNoMamiferoSemiacuatico (Marino)(NoVertebrado)(NoCuadrupedo) => (assert(NoMamiferoSemiacuatico)))")
+reglas_sistema_experto.append("(defrule reglaMamiferoTerrestre (NoMarino)(Vertebrado)(Cuadrupedo) => (assert(MamiferoTerrestre)))")
+reglas_sistema_experto.append("(defrule reglaNoMamiferoTerrestre (NoMarino)(Vertebrado)(NoCuadrupedo) => (assert(NoMamiferoTerrestre)))")
+reglas_sistema_experto.append("(defrule reglaNoVertebradoNoMarinoCuadrupedo (NoMarino)(NoVertebrado)(Cuadrupedo) => (assert(NoVertebradoNoMarinoCuadrupedo)))")
+reglas_sistema_experto.append("(defrule reglaNoVertebradoNoMarinoNoCuadrupedo (NoMarino)(NoVertebrado)(NoCuadrupedo) => (assert(NoVertebradoNoMarinoNoCuadrupedo)))")
 
-sistemaExperto.run()
+def inicializar_ambiente():
+    sistemaExperto = clips.Environment()
+    sistemaExperto.clear()
+    for regla in reglas_sistema_experto:
+        sistemaExperto.build(regla)
+    return sistemaExperto
+
+def caracteristicas_de_busqueda(sistemaExperto):
+    caracteristicas = []
+    for fact in sistemaExperto.facts():
+        fact = str(fact).translate(str.maketrans("", "", caracteres_a_eliminar))
+        caracteristicas.append(fact)
+    return caracteristicas
+
+def ejecutar_ambiente(sistemaExperto):
+    resultados_sistema_experto = {"clasificacion": "", "animales": []}
+    print(sistemaExperto.activations())
+    
+    sistemaExperto.run()
+    print(sistemaExperto.activations())
+    for fact in sistemaExperto.facts():
+        factString = str(fact)
+        factString = factString.translate(str.maketrans("", "", caracteres_a_eliminar))
+        if "MamiferoSemiacuatico" == factString:
+            resultados_sistema_experto["clasificacion"] = "Animales Semiacuaticos"
+        if "MamiferoAcuatico" == factString:
+            resultados_sistema_experto["clasificacion"] = "Animales Acuaticos"
+        if "NoVertebradoMarinoCuadrupedo" == factString:
+            resultados_sistema_experto["clasificacion"] = "Animales Semiacuaticos y No Vertebrados"
+        if "NoMamiferoSemiacuatico" == factString:
+            resultados_sistema_experto["clasificacion"] = "Animales Marinos, No Vertebrados y No Cuadrupedos"
+        if "MamiferoTerrestre" == factString:
+            resultados_sistema_experto["clasificacion"] = "Animales Terrestres, Vertebrados y Cuadrupedos"
+        if "NoMamiferoTerrestre" == factString:
+            resultados_sistema_experto["clasificacion"] = "Animales Terrestres, No Cuadrupedos y Vertebrados"
+        if "NoVertebradoNoMarinoCuadrupedo" == factString:
+            resultados_sistema_experto["clasificacion"] = "Animales Invertebrados, Terrestres y Cuadrupedos"
+        if "NoVertebradoNoMarinoNoCuadrupedo" == factString:
+            resultados_sistema_experto["clasificacion"] = "Animales Invertebrados, Terrestres y No Cuadrupedos"
+    print("Resultado de la clasificación: ", resultados_sistema_experto["clasificacion"])
+    resultados_sistema_experto["animales"] = buscar_animal_por_caracteristicas(caracteristicas_de_busqueda(sistemaExperto))
+    return resultados_sistema_experto
 
