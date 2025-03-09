@@ -3,13 +3,13 @@ Delfín:NoCuadrupedo, Vertebrado, Marino
 Tiburón:NoCuadrupedo, Vertebrado, Marino  
 León:Cuadrupedo, Vertebrado, NoMarino  
 Pingüino:NoCuadrupedo, Vertebrado, NoMarino  
-Tortuga:NoCuadrupedo, Vertebrado, NoMarino  
+Tortuga:Cuadrupedo, Vertebrado, NoMarino  
 Cocodrilo:Cuadrupedo, Vertebrado, Marino  
 Ornitorrinco:Cuadrupedo, Vertebrado, Marino  
 Foca:NoCuadrupedo, Vertebrado, Marino  
 Caballo:Cuadrupedo, Vertebrado, NoMarino  
 Vaca:Cuadrupedo, Vertebrado, NoMarino  
-Rana:NoCuadrupedo, Vertebrado, NoMarino  
+Rana:Cuadrupedo, Vertebrado, NoMarino  
 Pulpo:NoCuadrupedo, NoVertebrado, Marino  
 Lobo:Cuadrupedo, Vertebrado, NoMarino  
 Leopardo:Cuadrupedo, Vertebrado, NoMarino  

@@ -20,7 +20,7 @@ def buscar_animal_por_caracteristicas(caracteristicas):
                     animales.append(animal)
     return animales
 
-import clips # type: ignore
+import clips
 
 caracteres_a_eliminar = "()"
 reglas_sistema_experto = []
